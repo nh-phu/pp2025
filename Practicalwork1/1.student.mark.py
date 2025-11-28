@@ -5,20 +5,24 @@ courses = []
 
 def input_students():
     num_students = int(input("Enter number of students: "))
+    print("--------------------------")
     for _ in range(num_students):
         students.append({
             "name": input(f"Enter name of student: "),
             "id": input(f"Enter ID of student: "),
             "dob": input(f"Enter DoB of student (DD/MM/YYYY): "),
-    })
+        })
+        print("--------------------------")
 
 def input_courses():
     num_courses = int(input("Enter number of courses: "))
+    print("--------------------------")
     for _ in range(num_courses):
         courses.append({
             "name": input(f"Enter name of course: "),
             "id": input(f"Enter ID of course: ")
         })
+        print("--------------------------")
 
 def print_students():
     print("--------------------------")
