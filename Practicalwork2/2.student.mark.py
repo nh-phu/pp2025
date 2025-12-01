@@ -30,7 +30,7 @@ class student(obj):
         return self.__marks
 
     def add_mark(self, course_id: int, mark: int):
-        if (0 > mark or mark > 20):
+        if 0 > mark or mark > 20:
             raise ValueError("Mark must be between 0 and 20.")
         self.__marks[course_id] = mark
 
@@ -107,7 +107,7 @@ def print_marks():
     print("--------------------------")
     for stu in students:
         if stu.has_mark(course_id):
-            print(f"Student: {stu.name}, ID: {stu.id}, Mark: {stu.get_mark}")
+            print(f"Student: {stu.name}, ID: {stu.id}, Mark: {stu.get_mark(course_id)}")
     print("--------------------------")
 
 
@@ -144,20 +144,21 @@ def main():
     input_courses()
     while 1:
         mode = input("Enter action: ")
-        if mode == "help":
-            show_help()
-        elif mode == "list students":
-            print_students()
-        elif mode == "list courses":
-            print_course()
-        elif mode == "list marks":
-            print_marks()
-        elif mode == "input marks":
-            input_marks()
-        elif mode == "exit" or mode == "quit":
-            break
-        else:
-            print("Invalid option. Please try again.")
+        match mode:
+            case "help":
+                show_help()
+            case "list students":
+                print_students()
+            case "list courses":
+                print_course()
+            case "list marks":
+                print_marks()
+            case "input marks":
+                input_marks()
+            case "exit" | "quit":
+                break
+            case _:
+                print("Invalid option. Please try again.")
 
 
 if __name__ == "__main__":

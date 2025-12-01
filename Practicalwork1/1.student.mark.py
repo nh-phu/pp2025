@@ -3,26 +3,33 @@
 students = []
 courses = []
 
+
 def input_students():
     num_students = int(input("Enter number of students: "))
     print("--------------------------")
     for _ in range(num_students):
-        students.append({
-            "name": input(f"Enter name of student: "),
-            "id": input(f"Enter ID of student: "),
-            "dob": input(f"Enter DoB of student (DD/MM/YYYY): "),
-        })
+        students.append(
+            {
+                "name": input("Enter name of student: "),
+                "id": input("Enter ID of student: "),
+                "dob": input("Enter DoB of student (DD/MM/YYYY): "),
+            }
+        )
         print("--------------------------")
+
 
 def input_courses():
     num_courses = int(input("Enter number of courses: "))
     print("--------------------------")
     for _ in range(num_courses):
-        courses.append({
-            "name": input(f"Enter name of course: "),
-            "id": input(f"Enter ID of course: ")
-        })
+        courses.append(
+            {
+                "name": input("Enter name of course: "),
+                "id": input("Enter ID of course: "),
+            }
+        )
         print("--------------------------")
+
 
 def print_students():
     print("--------------------------")
@@ -30,36 +37,44 @@ def print_students():
         print(f"Name: {studetn['name']}, ID: {studetn['id']}, DoB: {studetn['dob']}")
     print("--------------------------")
 
+
 def print_course():
     print("--------------------------")
     for course in courses:
         print(f"Name: {course['name']}, ID: {course['id']}")
     print("--------------------------")
 
+
 def print_marks():
     course_id = input("Enter course ID to print marks: ")
     print("--------------------------")
     for student in students:
         if "marks" in student and course_id in student["marks"]:
-            print(f"Student: {student['name']}, ID: {student['id']}, Mark: {student['marks'][course_id]}")
+            print(
+                f"Student: {student['name']}, ID: {student['id']}, Mark: {student['marks'][course_id]}"
+            )
     print("--------------------------")
+
 
 def input_marks():
     course_id = input("Enter course ID to input marks: ")
     course = None
     for c in courses:
-        if c['id'] == course_id:
+        if c["id"] == course_id:
             course = c
             break
-    if course == None:
+    if course is None:
         print("Course not found.")
         return
 
     for student in students:
-        mark = input(f"Enter mark for student {student['name']} (ID: {student['id']}): ")
+        mark = input(
+            f"Enter mark for student {student['name']} (ID: {student['id']}): "
+        )
         if "marks" not in student:
             student["marks"] = {}
         student["marks"][course_id] = mark
+
 
 def show_help():
     print("--------------------------")
@@ -72,25 +87,28 @@ def show_help():
     print("  - exit or quit")
     print("--------------------------")
 
+
 def main():
     input_students()
     input_courses()
-    while (1):
+    while 1:
         mode = input("Enter action: ")
-        if mode == 'help':
-            show_help()
-        elif mode == 'list students':
-            print_students()
-        elif mode == 'list courses':
-            print_course()
-        elif mode == 'list marks':
-            print_marks()
-        elif mode == 'input marks':
-            input_marks()
-        elif mode == 'exit' or mode == 'quit':
-            break
-        else:
-            print("Invalid option. Please try again.")
+        match mode:
+            case "help":
+                show_help()
+            case "list students":
+                print_students()
+            case "list courses":
+                print_course()
+            case "list marks":
+                print_marks()
+            case "input marks":
+                input_marks()
+            case "exit" | "quit":
+                break
+            case _:
+                print("Invalid option. Please try again.")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
