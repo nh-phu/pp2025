@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import curses
-from domains import System, UI
+
+from domains import UI, System
 
 
 def main():
