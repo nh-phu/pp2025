@@ -130,12 +130,12 @@ def input_marks():
 def show_help():
     print("--------------------------")
     print("Options:")
-    print("  - help")
-    print("  - list students")
-    print("  - list courses")
-    print("  - list marks")
-    print("  - input marks")
-    print("  - exit or quit")
+    print("1 - help")
+    print("2 - list students")
+    print("3 - list courses")
+    print("4 - list marks")
+    print("5 - input marks")
+    print("6 - exit or quit")
     print("--------------------------")
 
 
@@ -145,17 +145,17 @@ def main():
     while 1:
         mode = input("Enter action: ")
         match mode:
-            case "help":
+            case 1 | "help":
                 show_help()
-            case "list students":
+            case 2 | "list students":
                 print_students()
-            case "list courses":
+            case 3 | "list courses":
                 print_course()
-            case "list marks":
+            case 4 | "list marks":
                 print_marks()
-            case "input marks":
+            case 5 | "input marks":
                 input_marks()
-            case "exit" | "quit":
+            case 6 | "exit" | "quit":
                 break
             case _:
                 print("Invalid option. Please try again.")
